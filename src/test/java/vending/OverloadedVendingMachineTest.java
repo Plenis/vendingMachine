@@ -125,4 +125,23 @@ class OverloadedVendingMachineTest {
         assertEquals(vendingMachine.getSoftDrinkCount(), 12);
         assertEquals(vendingMachine.getChocolateCount(), 11);
     }
+
+    @Test
+    public void shouldBeAbleToGetStockCount(){
+        OverloadedVendingMachine vendingMachine = new OverloadedVendingMachine(10, 10, 10);
+        SaltySnack saltySnack = new SaltySnack();
+        SoftDrink softDrink = new SoftDrink();
+        Chocolate chocolate = new Chocolate();
+
+        vendingMachine.addProduct(saltySnack);
+        vendingMachine.addProduct(saltySnack);
+        vendingMachine.addProduct(saltySnack);
+        vendingMachine.addProduct(saltySnack);
+        vendingMachine.addProduct(softDrink);
+        vendingMachine.buy(softDrink);
+        vendingMachine.buy(chocolate);
+        vendingMachine.buy(chocolate);
+
+        assertEquals(vendingMachine.getStockCount(), "Salty Snack: 14, Soft Drink: 10, Chocolate: 8");
+    }
 }

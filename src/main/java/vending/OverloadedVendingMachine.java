@@ -48,6 +48,10 @@ public class OverloadedVendingMachine {
         return chocolateCount;
     }
 
+    public String getStockCount(){
+        return "Salty Snack: " + saltySnackCount + ", Soft Drink: " + softDrinkCount + ", Chocolate: " + chocolateCount;
+    }
+
     public void addProduct(SaltySnack saltySnack){
         this.saltySnackCount ++;
     }
