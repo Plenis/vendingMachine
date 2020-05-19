@@ -7,6 +7,10 @@ import vending.product.SoftDrink;
 
 public class OverloadedVendingMachine {
 
+    public static void main(String[]args){
+
+    }
+
     private int saltySnackCount;
     private int softDrinkCount;
     private int chocolateCount;
@@ -36,15 +40,15 @@ public class OverloadedVendingMachine {
         this.chocolateCount --;
     }
 
-    public int getSaltySnackCount(){
+    public int getStockCount(SaltySnack saltySnack){
         return saltySnackCount;
     }
 
-    public int getSoftDrinkCount(){
+    public int getStockCount(SoftDrink softDrink){
         return softDrinkCount;
     }
 
-    public int getChocolateCount(){
+    public int getStockCount(Chocolate chocolate){
         return chocolateCount;
     }
 

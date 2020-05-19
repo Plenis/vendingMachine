@@ -18,9 +18,7 @@ class OverloadedVendingMachineTest {
      vendingMachine.buy(product);
 
      assertEquals(product.description(), "You have purchased all three products");
-     assertEquals(vendingMachine.getSaltySnackCount(), 9);
-     assertEquals(vendingMachine.getSoftDrinkCount(), 9);
-     assertEquals(vendingMachine.getChocolateCount(), 9);
+     assertEquals(vendingMachine.getStockCount(), "Salty Snack: 9, Soft Drink: 9, Chocolate: 9");
     }
 
     @Test
@@ -33,7 +31,7 @@ class OverloadedVendingMachineTest {
         vendingMachine.buy(saltySnack);
 
         assertEquals(saltySnack.description(), "Salty snack purchased!");
-        assertEquals(vendingMachine.getSaltySnackCount(), 7);
+        assertEquals(vendingMachine.getStockCount(saltySnack), 7);
     }
 
     @Test
@@ -48,7 +46,7 @@ class OverloadedVendingMachineTest {
         vendingMachine.buy(softDrink);
 
         assertEquals(softDrink.description(), "Soft drink purchased!");
-        assertEquals(vendingMachine.getSoftDrinkCount(), 5);
+        assertEquals(vendingMachine.getStockCount(softDrink), 5);
     }
 
     @Test
@@ -65,7 +63,7 @@ class OverloadedVendingMachineTest {
         vendingMachine.buy(chocolate);
 
         assertEquals(chocolate.description(), "Chocolate purchased!");
-        assertEquals(vendingMachine.getChocolateCount(), 3);
+        assertEquals(vendingMachine.getStockCount(chocolate), 3);
     }
 
     @Test
@@ -79,7 +77,7 @@ class OverloadedVendingMachineTest {
         vendingMachine.addProduct(saltySnack);
         vendingMachine.addProduct(saltySnack);
 
-        assertEquals(vendingMachine.getSaltySnackCount(), 15);
+        assertEquals(vendingMachine.getStockCount(saltySnack), 15);
     }
 
     @Test
@@ -92,7 +90,7 @@ class OverloadedVendingMachineTest {
         vendingMachine.addProduct(softDrink);
         vendingMachine.addProduct(softDrink);
 
-        assertEquals(vendingMachine.getSoftDrinkCount(), 14);
+        assertEquals(vendingMachine.getStockCount(softDrink), 14);
     }
 
     @Test
@@ -104,7 +102,7 @@ class OverloadedVendingMachineTest {
         vendingMachine.addProduct(chocolate);
         vendingMachine.addProduct(chocolate);
 
-        assertEquals(vendingMachine.getChocolateCount(), 13);
+        assertEquals(vendingMachine.getStockCount(chocolate), 13);
     }
 
     @Test
@@ -121,9 +119,9 @@ class OverloadedVendingMachineTest {
         vendingMachine.addProduct(softDrink);
         vendingMachine.addProduct(chocolate);
 
-        assertEquals(vendingMachine.getSaltySnackCount(), 13);
-        assertEquals(vendingMachine.getSoftDrinkCount(), 12);
-        assertEquals(vendingMachine.getChocolateCount(), 11);
+        assertEquals(vendingMachine.getStockCount(saltySnack), 13);
+        assertEquals(vendingMachine.getStockCount(softDrink), 12);
+        assertEquals(vendingMachine.getStockCount(chocolate), 11);
     }
 
     @Test
