@@ -2,6 +2,7 @@ package vending;
 
 import org.junit.jupiter.api.Test;
 import vending.product.Chocolate;
+import vending.product.JellyBean;
 import vending.product.SaltySnack;
 import vending.product.SoftDrink;
 
@@ -11,7 +12,7 @@ class ExtendableVendingMachineTest {
 
     @Test
     void shouldBeAbleToBuySaltySnack() {
-        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(5,5,5);
+        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(5,5,5, 5);
         SaltySnack saltySnack = new SaltySnack();
 
         vendingMachine.buy(saltySnack);
@@ -23,7 +24,7 @@ class ExtendableVendingMachineTest {
 
     @Test
     void shouldBeAbleToBuySoftDrink() {
-        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(5,5,5);
+        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(5,5,5, 5);
         SoftDrink softDrink = new SoftDrink();
 
         vendingMachine.buy(softDrink);
@@ -36,7 +37,7 @@ class ExtendableVendingMachineTest {
 
     @Test
     void shouldBeAbleToBuyChocolate() {
-        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(5,5,5);
+        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(5,5,5, 5);
         Chocolate chocolate = new Chocolate();
 
         vendingMachine.buy(chocolate);
@@ -47,11 +48,24 @@ class ExtendableVendingMachineTest {
     }
 
     @Test
+    void shouldBeAbleToBuyJellyBean() {
+        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(5,5,5, 5);
+        JellyBean jellyBean = new JellyBean();
+
+        vendingMachine.buy(jellyBean);
+        vendingMachine.buy(jellyBean);
+
+        assertEquals(jellyBean.description(), "Jelly beans purchased!");
+        assertEquals(vendingMachine.getStockCount(jellyBean), 3);
+    }
+
+    @Test
     void shouldBeAbleToGetProductStockCount(){
-        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(5,5, 5);
+        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(5,5, 5, 5);
         SaltySnack saltySnack = new SaltySnack();
         SoftDrink softDrink = new SoftDrink();
         Chocolate chocolate = new Chocolate();
+        JellyBean jellyBean = new JellyBean();
 
         vendingMachine.buy(saltySnack);
         vendingMachine.buy(saltySnack);
@@ -59,16 +73,21 @@ class ExtendableVendingMachineTest {
         vendingMachine.buy(chocolate);
         vendingMachine.buy(chocolate);
         vendingMachine.buy(chocolate);
+        vendingMachine.buy(jellyBean);
+        vendingMachine.buy(jellyBean);
+        vendingMachine.buy(jellyBean);
+        vendingMachine.buy(jellyBean);
 
-        assertEquals(vendingMachine.getStockCount(), "Salty Snack: 3, Soft Drink: 4, Chocolate: 2");
+        assertEquals(vendingMachine.getStockCount(), "Salty Snack: 3, Soft Drink: 4, Chocolate: 2, Jelly Beans: 1");
     }
 
     @Test
     void shouldBeAbleToAddStock(){
-        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(5,5, 5);
+        ExtendableVendingMachine vendingMachine = new ExtendableVendingMachine(5,5, 5, 5);
         SaltySnack saltySnack = new SaltySnack();
         SoftDrink softDrink = new SoftDrink();
         Chocolate chocolate = new Chocolate();
+        JellyBean jellyBean = new JellyBean();
 
         vendingMachine.addProduct(saltySnack);
         vendingMachine.addProduct(saltySnack);
@@ -80,7 +99,9 @@ class ExtendableVendingMachineTest {
         vendingMachine.addProduct(chocolate);
         vendingMachine.addProduct(chocolate);
         vendingMachine.addProduct(chocolate);
+        vendingMachine.addProduct(jellyBean);
+        vendingMachine.addProduct(jellyBean);
 
-        assertEquals(vendingMachine.getStockCount(),"Salty Snack: 8, Soft Drink: 9, Chocolate: 8");
+        assertEquals(vendingMachine.getStockCount(),"Salty Snack: 8, Soft Drink: 9, Chocolate: 8, Jelly Beans: 7");
     }
 }

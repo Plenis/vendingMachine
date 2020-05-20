@@ -1,19 +1,22 @@
 package vending;
 
-import vending.product.Chocolate;
-import vending.product.Product;
-import vending.product.SaltySnack;
-import vending.product.SoftDrink;
+import vending.product.*;
+
 
 public class ExtendableVendingMachine extends Product {
     private int saltySnackCount;
     private int softDrinkCount;
     private int chocolateCount;
+    private int jellyBeanCount;
 
-    public ExtendableVendingMachine(int saltySnackCount, int softDrinkCount, int chocolateCount) {
+    public static void main(String[]args){
+
+    }
+    public ExtendableVendingMachine(int saltySnackCount, int softDrinkCount, int chocolateCount, int jellyBeanCount) {
         this.saltySnackCount = saltySnackCount;
         this.softDrinkCount = softDrinkCount;
         this.chocolateCount = chocolateCount;
+        this.jellyBeanCount = jellyBeanCount;
 
     }
 
@@ -27,7 +30,10 @@ public class ExtendableVendingMachine extends Product {
         } else
             if(product instanceof Chocolate){
                  chocolateCount --;
-        }
+        } else
+            if(product instanceof JellyBean){
+                jellyBeanCount --;
+            }
     }
     public int getStockCount(Product product) {
         if (product instanceof SaltySnack) {
@@ -36,12 +42,14 @@ public class ExtendableVendingMachine extends Product {
             return softDrinkCount;
         } else if (product instanceof Chocolate) {
             return chocolateCount;
+        } else if (product instanceof JellyBean){
+            return jellyBeanCount;
         }
         return 0;
     }
 
     public String getStockCount(){
-        return "Salty Snack: " + saltySnackCount + ", Soft Drink: " + softDrinkCount + ", Chocolate: " + chocolateCount;
+        return "Salty Snack: " + saltySnackCount + ", Soft Drink: " + softDrinkCount + ", Chocolate: " + chocolateCount + ", Jelly Beans: " + jellyBeanCount;
     }
 
     public void addProduct(Product product){
@@ -52,6 +60,8 @@ public class ExtendableVendingMachine extends Product {
                 this.softDrinkCount ++;
             }else if ((product instanceof Chocolate)) {
                 this.chocolateCount ++;
+            }else if (product instanceof JellyBean){
+                this.jellyBeanCount ++;
             }
 
     }
