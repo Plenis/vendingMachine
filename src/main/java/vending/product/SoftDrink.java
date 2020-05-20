@@ -5,5 +5,4 @@ public class SoftDrink extends Product{
     public String description() {
         return "Soft drink purchased!";
     }
-
 }

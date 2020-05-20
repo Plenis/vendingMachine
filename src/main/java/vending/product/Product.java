@@ -1,8 +1,9 @@
 package vending.product;
 
+import vending.ExtendableVendingMachine;
+
 public class Product {
     public String description() {
-        return "You have purchased all three products";
+        return "Products Available";
     }
-
 }
