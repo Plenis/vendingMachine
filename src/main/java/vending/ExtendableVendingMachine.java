@@ -20,19 +20,19 @@ public class ExtendableVendingMachine extends Product {
 
     }
 
-    public void buy(Product product){
+    public void buy(Product product, int quantity){
 
         if(product instanceof SaltySnack){
-               saltySnackCount --;
+            saltySnackCount -= quantity;
         } else
             if (product instanceof SoftDrink){
-                  softDrinkCount --;
+                  softDrinkCount -= quantity;
         } else
             if(product instanceof Chocolate){
-                 chocolateCount --;
+                 chocolateCount -= quantity;
         } else
             if(product instanceof JellyBean){
-                jellyBeanCount --;
+                jellyBeanCount -= quantity;
             }
     }
     public int getStockCount(Product product) {
@@ -52,16 +52,16 @@ public class ExtendableVendingMachine extends Product {
         return "Salty Snack: " + saltySnackCount + ", Soft Drink: " + softDrinkCount + ", Chocolate: " + chocolateCount + ", Jelly Beans: " + jellyBeanCount;
     }
 
-    public void addProduct(Product product){
+    public void addProduct(Product product, int quantity){
         if(product instanceof SaltySnack){
-            this.saltySnackCount ++;
+            this.saltySnackCount += quantity;
         }else
             if(product instanceof SoftDrink){
-                this.softDrinkCount ++;
+                this.softDrinkCount += quantity;
             }else if ((product instanceof Chocolate)) {
-                this.chocolateCount ++;
+                this.chocolateCount += quantity;
             }else if (product instanceof JellyBean){
-                this.jellyBeanCount ++;
+                this.jellyBeanCount += quantity;
             }
 
     }
